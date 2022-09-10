@@ -30,7 +30,7 @@ const WaveShaderMaterial = shaderMaterial(
     float noiseAmp = 0.25;
     vec3 noisePos = vec3(pos.x + uTime * noiseFreq, pos.y, pos.z);
     pos.z += snoise3(noisePos) * noiseAmp;
-    vWave = pos.x;
+    vWave = pos.z;
 
     gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
   }
@@ -48,7 +48,17 @@ const WaveShaderMaterial = shaderMaterial(
 
   void main(){
     float wave = vWave * 0.04;
-    vec3 texture = texture2D(uTexture, vUv + wave).rgb;
+    // vec3 texture = texture2D(uTexture, vUv + wave).rgb;
+
+
+    // Split each texture color vector
+    float r = texture2D(uTexture, vUv + wave*0.9).r;
+    float g = texture2D(uTexture, vUv + wave*0.8).g;
+    float b = texture2D(uTexture, vUv + wave*0.9).b;
+
+    
+    // Put them back together
+    vec3 texture = vec3(r, g, b);
     gl_FragColor = vec4(texture, sin(vWave*0.2)+0.88);
   }
   `
