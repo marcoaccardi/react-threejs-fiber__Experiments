@@ -31,6 +31,12 @@ const App = () => {
       />
       <pointLight position={[-10, 0, -20]} intensity={1.5} />
       <pointLight position={[0, -10, 0]} intensity={0.5} />
+      <group>
+        <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -5, 0]}>
+          <planeGeometry attach='geometry' args={[100, 100]} />
+          <meshStandardMaterial attach='material' color='yellow' />
+        </mesh>
+      </group>
       <SpinningMesh position={[0, 1, 0]} args={[3, 2, 1]} color='lightblue' />
       <SpinningMesh position={[-2, 1, -5]} color='pink' />
       <SpinningMesh position={[5, 1, -2]} color='pink' />
