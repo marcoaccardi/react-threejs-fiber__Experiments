@@ -1,6 +1,6 @@
-import "./App.css";
 import { Canvas } from "@react-three/fiber";
-function App() {
+import "./App.scss";
+const App = () => {
   return (
     <div className='canvas-container'>
       <Canvas>
@@ -11,6 +11,6 @@ function App() {
       </Canvas>
     </div>
   );
-}
+};
 
 export default App;
