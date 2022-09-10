@@ -6,7 +6,7 @@ import "./App.scss";
 
 const WaveShaderMaterial = shaderMaterial(
   //Uniform
-  {},
+  { uColor: new THREE.Color(0.0, 0.0, 0.0, 0.0) },
   //Vertex Shader
   glsl`
   void main(){
@@ -15,8 +15,9 @@ const WaveShaderMaterial = shaderMaterial(
   `,
   // Fragment Shader
   glsl`
+  uniform vec3 uColor;
   void main(){
-    gl_FragColor = vec4(1.0, 0.4, 1.0, 0.8);
+    gl_FragColor = vec4(uColor, 0.8);
   }
   `
 );
@@ -30,7 +31,7 @@ const Scene = () => {
       <pointLight position={[10, 10, 10]} />
       <mesh>
         <planeGeometry args={[3, 5]} />
-        <waveShaderMaterial />
+        <waveShaderMaterial uColor={"hotpink"} />
       </mesh>
     </Canvas>
   );
