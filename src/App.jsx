@@ -1,12 +1,11 @@
-import { Canvas } from "@react-three/fiber";
 import "./App.scss";
+import { Canvas } from "@react-three/fiber";
 const App = () => {
   return (
     <div className='canvas-container'>
       <Canvas>
-        <mesh scale={4}>
-          <boxGeometry />
-          <meshStandardMaterial />
+        <mesh>
+          <boxBufferGeometry attach='geometry' args={[1, 1, 1]} />
         </mesh>
       </Canvas>
     </div>
